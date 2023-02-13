@@ -1,11 +1,7 @@
 import { Image, Button } from '@mantine/core';
+import React from 'react';
 import { useState } from 'react';
-
-import iconDownGold from '../../../public/images/ico_down_gold.svg';
-import iconQuestion from '../../../public/images/ico_q_blue.svg';
-import iconUpGold from '../../../public/images/ico_up_gold.svg';
 import { useModal } from '../../hooks/useModal';
-
 import { FILTER_LIST } from './filterHairRemovalData';
 import { FilterItem } from './partials/FilterItem';
 
@@ -113,7 +109,7 @@ export const Filter = () => {
                         className="border leading-none w-[165px] border-primary-400 border-b-4 border-b-primary-400 rounded-md px-3 lg:py-1.5 flex justify-center gap-1 cursor-pointer hover:translate-y-[2px] hover:transition hover:duration-200  hover:border z-10"
                       >
                         <Image
-                          src={iconQuestion}
+                          src="../../../public/images/ico_q_blue.svg"
                           width={18}
                           height={18}
                           alt="icon question"
@@ -128,7 +124,11 @@ export const Filter = () => {
 
                 {/* lg:grid-cols-{?} depend on number item filter have*/}
                 <div
-                  className='lg:grid-cols-4 grid grid-cols-2 gap-2 text-smm lg:text-xl lg:px-8'
+                  className={`${
+                    filter.items.length < 4
+                      ? `lg:grid-cols-${filter.items.length}`
+                      : 'lg:grid-cols-4'
+                  } grid grid-cols-2 gap-2 text-smm lg:text-xl lg:px-8`}
                 >
                   {filter.items.map((item: FilterConditionType) => {
                     return (
@@ -150,7 +150,7 @@ export const Filter = () => {
                       className="border leading-none min-w-[146px] border-primary-400 border-b-4 border-b-primary-400 rounded-md px-3 py-[10px] flex justify-center gap-1 cursor-pointer hover:translate-y-[2px] hover:transition hover:duration-200  hover:border"
                     >
                       <Image
-                        src={iconQuestion}
+                        src="../../../public/images/ico_q_blue.svg"
                         width={15}
                         height={15}
                         alt="icon question"
@@ -177,14 +177,14 @@ export const Filter = () => {
             <div className="">
               {isOpenCollapses ? (
                 <Image
-                  src={iconUpGold}
+                  src="../../../public/images/ico_up_gold.svg"
                   width={15}
                   height={15}
                   alt="icon up gold"
                 />
               ) : (
                 <Image
-                  src={iconDownGold}
+                  src="../../../public/images/ico_down_gold.svg"
                   width={15}
                   height={15}
                   alt="icon down gold"
