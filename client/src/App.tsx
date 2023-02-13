@@ -2,6 +2,7 @@ import { Box } from '@mantine/core'
 import useSWR from "swr"
 import './App.css'
 import AddTodo from './components/AddTodo'
+import {Filter} from './components/Filter'
 
 export interface Todo {
   id: number;
@@ -19,11 +20,7 @@ function App() {
   const { data, mutate } = useSWR<Todo[]>("api/todos", fetcher)
 
   return (
-    <Box>
-      {JSON.stringify(data)}
-
-      <AddTodo mutate={mutate} />
-    </Box>
+    <Filter />
   )
 }
 
